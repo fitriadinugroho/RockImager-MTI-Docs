@@ -1,0 +1,13 @@
+@startuml Controller Class Diagram
+ImagingManager "1"--*"n" Imager
+ImagingManager -o ImagingScheduler : trigger imaging
+TemperatureScheduler --o StorageManager : trigger plate\nmovement
+ImagingManager --o StorageManager
+StorageManager --o RoverController
+ImagingManager --o ImagerLink
+StorageManager --o ImagerLink : get plate info
+ImagingScheduler --o ImagerLink : get imaging\nschedule
+GUIService --o ImagingManager : display
+GUIService --o TemperatureScheduler : display
+GUIService --o ImagingScheduler : display
+@enduml

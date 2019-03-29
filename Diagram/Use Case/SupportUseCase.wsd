@@ -1,0 +1,13 @@
+left to right direction
+skinparam packageStyle rectangle
+actor Support
+actor LIMS
+rectangle "Rock Imager-MTI"{
+  Support --> (Calibrate Instrument)
+  (Calibrate Instrument) ..> (Storage Calibration) : <<include>>
+  (Calibrate Instrument) ..> (Camera Calibration) : <<include>>
+  (Calibrate Instrument) ..> (Optics Calibration) : <<include>>  
+  Support --> (Calibrate Plate)
+  (Calibrate Plate) ..> (Get Plate Info) : <<include>>
+  (Get Plate Info) <-- LIMS
+}

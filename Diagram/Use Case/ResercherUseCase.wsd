@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Researcher
+actor Instrument
+actor LIMS
+rectangle "Rock Imager-MTI"{
+  Researcher-->(Register Plate)
+  Researcher-->(Manual Inspection)
+  Researcher-->(Automatic Inspection)
+  Instrument-->(Automatic Inspection)
+  Instrument-->(Automatic Plate Storage)
+  (Automatic Inspection) <-- LIMS
+  (Manual Inspection)..>(Get Plate Info):<<include>>
+  (Manual Inspection)..>(Get Imaging Setting):<<include>>  
+  (Automatic Inspection)..>(Get Plate Info):<<include>>
+  (Automatic Inspection)..>(Get Imaging Setting):<<include>>
+  (Automatic Inspection)..>(Get Imaging Schedule):<<include>>
+  (Automatic Plate Storage)..>(Get Temperature Schedule):<<include>>  
+  (Get Plate Info) <-- LIMS
+  (Get Imaging Setting) <-- LIMS
+  (Get Imaging Schedule) <-- LIMS
+  (Get Temperature Schedule) <-- LIMS
+}
+@enduml

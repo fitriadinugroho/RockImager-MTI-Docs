@@ -1,0 +1,6 @@
+@startuml Processor Class Diagram
+GUIService --* ImageProcessingManager : display
+ImageProcessingManager --* DoneFileMonitor : notify
+ImageProcessingManager "1"--*"n" ImageProcessingTask : generate
+ImageProcessingManager --* Imagerlink : store
+@enduml
